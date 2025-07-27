@@ -1,57 +1,45 @@
 # ICICI Bank Node.js Web Application
 
-A full-stack simulation of ICICI Bank’s online banking portal using Node.js, Express, MySQL, and Bootstrap 5. The application enables user registration, login, QR code generation, session-based routing, and financial service navigation in a responsive web interface.
-
----
+A professional-grade Node.js-based simulation of ICICI Bank’s digital banking portal. The platform includes secure user authentication, dynamic service navigation, responsive UI design, and scalable backend architecture using MySQL and Express.js.
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Environment Configuration](#environment-configuration)
-- [Database Setup](#database-setup)
-- [UI Components](#ui-components)
-- [License](#license)
-
----
+- Overview
+- Features
+- Technologies
+- Installation
+- Usage
+- Project Structure
+- Environment Configuration
+- Database Setup
+- UI Components
+- License
 
 ## Overview
 
-This Node.js-based web application is designed to emulate ICICI Bank’s digital services portal, incorporating backend logic, secure user session handling, frontend UI with dynamic routing, and modular scalability. It uses MySQL for data persistence, supports user signup/login, and includes a structured dashboard and payment interface with responsive UI components.
-
----
+This application replicates the structure and behavior of an enterprise banking system for ICICI Bank using modern JavaScript technologies. It supports user session control, login/signup workflows, QR-code generation framework, and modular UI views for services like payments and loans.
 
 ## Features
 
-- Secure user authentication with session management
-- Dynamic user registration and login forms
-- MySQL-backed user table with auto-creation logic
-- Frontend payment dashboard with validation
-- User dashboard and service redirection
-- Email sending capability using Nodemailer
-- Structured QR code integration (template present)
-- Responsive UI using Bootstrap 5 and custom media queries
-
----
+- Session-based user authentication
+- Signup/Login with username verification
+- Nodemailer integration (email-ready backend)
+- QR code field architecture (optional, stub included)
+- Responsive layouts with Bootstrap 5 and CSS3
+- Route protection middleware
+- Loan and payment interfaces
+- Slideshow and redirection support pages
 
 ## Technologies
 
-| Layer        | Tools & Libraries                                  |
-|--------------|-----------------------------------------------------|
-| Frontend     | HTML, CSS, Bootstrap 5                              |
-| Backend      | Node.js, Express, dotenv, express-session           |
-| Database     | MySQL, mysql2                                       |
-| Utilities    | body-parser, cors, nodemailer, QRCode, uuid         |
-
----
+**Frontend:** HTML, CSS, Bootstrap 5  
+**Backend:** Node.js, Express, dotenv, session  
+**Database:** MySQL, MySQL2  
+**Tools:** body-parser, cors, nodemailer, QRCode, uuid
 
 ## Installation
 
-1. **Clone the repository**  
-   ```bash
-   git clone https://github.com/kush1310/icici-bank-node.js.git
-   cd icici-bank-node.js
+```bash
+git clone https://github.com/kush1310/icici-bank-node.js.git
+cd icici-bank-node.js
+npm install
