@@ -1,0 +1,663 @@
+<!-- LOANS | ICICI BANK -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="icon" href="1.svg" type="image/x-icon">
+    <title>Loans | ICICI BANK</title>
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            scroll-behavior: smooth;
+            background-color: whitesmoke;
+        }
+        /* | NAVIGATION BAR | */
+        .navbar {
+            background-color: #fedec2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .navbar a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: solid orangered 0.2rem;
+            border-radius: 10px;
+            transition: color 0.2s;
+            margin-right: 10px;
+        }
+        .navbar a:hover {
+            color: orangered;
+            border: 0;
+            border-bottom: solid orangered 0.2rem;
+        }
+        .container {
+            max-width: 70%;
+            margin: auto;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .slideshow-container {
+            max-width: 60%;
+            position: relative;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .slide {
+            display: none;
+            height: 80%;
+        }
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 1rem;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+        .slide img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 1rem;
+            margin-top: -22px;
+            color: grey;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: black;
+            color: white;
+        }
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active, .dot:hover {
+            background-color: black;
+        }
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        @media (max-width: 992px) {
+            .footer-column {
+                min-width: calc(33.33% - 20px);
+            }
+        }
+        /* MEDIA QUERIES | EXTRA SMALL DEVICES | */
+        @media only screen and (min-width: 200px) and (max-width: 380px) {
+            .navbar a {
+                padding: 0.3rem;
+                font-size: 0.7rem;
+                border: 0;
+            }
+            .navbar a:hover {
+                color: orangered;
+                border: 0;
+            }
+            .container{
+                max-width: 80%;
+            }
+            .content h1 {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            .content p {
+                font-size: 1em;
+            }
+            .slideshow-container {
+                max-width: 80%;
+            }
+            .prev, .next {
+            font-size: 0.8rem;
+            }
+            .dot {
+                cursor: pointer;
+                height: 12px;
+                width: 12px;
+                margin: 0 2px;
+            }
+        }
+        /* | FOOTER CODE | */
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            width: 90%;
+            background-color: #fae8d8;
+        }
+        .footer-column {
+            flex: 1;
+            margin: 0 10px;
+            min-width: calc(20% - 20px);
+        }
+        .footer-column h3 {
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #282727;
+            border-bottom: solid orangered 0.2rem;
+            border-radius: 24px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #4a4a4a;
+        }
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+            color: rgb(255, 111, 0);
+            font-weight: bold;
+        }
+        .bottom-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fae8d8;
+            border-top: solid whitesmoke 1.5rem;
+            width: 90%;
+            font-size: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .dicgc a {
+            text-decoration: none;
+            color: #0055ff;
+        }
+        .dicgc a:hover {
+            text-decoration: underline;
+        }
+        .bottom-footer div {
+            flex: 1;
+            text-align: center;
+            min-width: 200px;
+            margin: 10px 0;
+        }
+        .bottom-footer a {
+            text-decoration: none;
+        }
+        .customer-care button {
+            background-color: #f36f20;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+        .customer-care button:hover {
+            background-color: #d65e17;
+        }
+        .social-icons img,
+        .app-icons img {
+            width: 30%;
+            height: 30%;
+            margin: 0 5px;
+        }
+        .registration-icons img {
+            width: 15%;
+            height: 15%;
+            margin: 0 5px;
+        }
+        .social-icons img:hover,
+        .app-icons img:hover,
+        .registration-icons img:hover {
+            opacity: 0.8;
+        }
+        .bullet-points p {
+            position: relative;
+            padding-left: 20px;
+        }
+        .bullet-points p::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #333;
+            font-size: 1.5em;
+            line-height: 1.2em;
+        }
+        .bullet-points p {
+            margin: 10px 0; 
+        }
+        @media (max-width: 992px) {
+            .footer-column {
+                min-width: calc(33.33% - 20px);
+            }
+        }
+        /* MEDIA QUERIES | MOBILE | */
+        @media only screen and (min-width: 380px) and (max-width: 576px) {
+            .navbar a {
+                padding: 0.3rem;
+                font-size: 0.8rem;
+                border: 0;
+            }
+            .navbar a:hover {
+                color: orangered;
+                border: 0;
+            }
+            .container{
+                max-width: 80%;
+            }
+            .content h1 {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            .content p {
+                font-size: 1em;
+            }
+            .slideshow-container {
+                max-width: 80%;
+            }
+            .prev, .next {
+            font-size: 0.8rem;
+            }
+            .dot {
+                cursor: pointer;
+                height: 12px;
+                width: 12px;
+                margin: 0 2px;
+            }
+        	#services .service-bottom .service-item {
+        		flex-basis: 75%;
+        		margin: 1.5%;
+        	}
+            h1.section-title {
+        		font-size: 2rem;
+                border-bottom: solid rgb(0, 0, 0) 0.3rem;
+                border-bottom-style: double;
+        	}
+            #services .services {
+        	    flex-direction: column;
+        	    text-align: center;
+        	    max-width: 90%;
+        	    margin: auto;
+        	    padding: 5px 0;
+                border: solid black 0.3rem;
+            }
+            #services .service-item h2 {
+        	    font-size: 2rem;
+                color: black;
+        	    margin-bottom: 10px;
+        	    text-transform: uppercase;
+                border-bottom: solid rgb(31, 127, 222) 0.2rem;
+                border-top: solid rgb(31, 127, 222) 0.2rem;
+                border-radius: 24px;
+                border-bottom-style: inset;
+            }
+        	#why-choose .project-item {
+        		height: 350px;
+        		margin: 0;
+        		width: 90%;
+        		border-radius: 0;
+        	}
+        	#why-choose .all-why-choose .project-info {
+        		height: 100%;
+        	}
+            .footer-column {
+                min-width: calc(100% - 20px);
+            }
+        }
+        /* MEDIA QUERIES | TABLET | */
+        @media only screen and (min-width: 576px) and (max-width: 768px) {
+            .navbar a {
+                padding: 0.3rem;
+                font-size: 1rem;
+                border: 0;
+            }
+            .navbar a:hover {
+                color: orangered;
+                border: 0;
+            }
+            .container{
+                max-width: 80%;
+            }
+            .content h1 {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+            .content p {
+                font-size: 1em;
+            }
+            .slideshow-container {
+                max-width: 80%;
+            }
+            .prev, .next {
+            font-size: 0.8rem;
+            }
+            .dot {
+                cursor: pointer;
+                height: 12px;
+                width: 12px;
+                margin: 0 2px;
+            }
+        	.cta {
+        		font-size: 2.5rem;
+        		padding: 20px 60px;
+        	}
+        	h1.section-title {
+        		font-size: 2.5rem;
+                border-bottom: solid rgb(0, 0, 0) 0.3rem;
+                border-bottom-style: double;
+        	}
+        	#services .service-bottom .service-item {
+        		flex-basis: 45%;
+        		margin: 2.5%;
+        	}
+            #services .service-item h2 {
+        	    font-size: 2rem;
+                color: black;
+        	    margin-bottom: 10px;
+        	    text-transform: uppercase;
+                border-bottom: solid rgb(31, 127, 222) 0.2rem;
+                border-top: solid rgb(31, 127, 222) 0.2rem;
+                border-radius: 24px;
+                border-bottom-style: inset;
+            }
+            #why-choose .project-item {
+        		height: 350px;
+        		margin: 0;
+        		width: 90%;
+        		border-radius: 0;
+        	}
+        	#why-choose .all-why-choose .project-info {
+        		height: 100%;
+        	}
+            .footer-column {
+                min-width: calc(50% - 20px);
+            }
+        }
+        /* MEDIA QUERIES | DESKTOP | */
+        @media only screen and (min-width: 768px) and (max-width: 2000px) {
+        	#services .service-bottom .service-item {
+        		flex-basis: 22%;
+        		margin: 1.5%;
+        	}
+            h1.section-title {
+        		font-size: 3.2rem;
+                border-bottom: solid rgb(0, 0, 0) 0.3rem;
+                border-bottom-style: double;
+        	}
+            .footer-column {
+                min-width: calc(25% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar" id="navbar">
+        <a href="app.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="" id="logoutLink">Log-Out</a>
+    </div>
+<br><br><br>
+    <div class="container">
+        <h2>Login for better experience</h2>
+    </div>
+
+    <div class="slideshow-container">
+        <div class="slide fade">
+            <div class="numbertext">1 / 10</div>
+            <img src="images/11.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">2 / 10</div>
+            <img src="images/12.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">3 / 10</div>
+            <img src="images/3.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">4 / 10</div>
+            <img src="images/4.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">5 / 10</div>
+            <img src="images/5.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">6 / 10</div>
+            <img src="images/6.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">7 / 10</div>
+            <img src="images/7.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">8 / 10</div>
+            <img src="images/8.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">9 / 10</div>
+            <img src="images/9.jpg">
+        </div>
+        <div class="slide fade">
+            <div class="numbertext">10 / 10</div>
+            <img src="images/10.jpg">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <!-- Dot indicators -->
+    <br>
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+        <span class="dot" onclick="currentSlide(4)"></span> 
+        <span class="dot" onclick="currentSlide(5)"></span> 
+        <span class="dot" onclick="currentSlide(6)"></span> 
+        <span class="dot" onclick="currentSlide(7)"></span> 
+        <span class="dot" onclick="currentSlide(8)"></span> 
+        <span class="dot" onclick="currentSlide(9)"></span> 
+        <span class="dot" onclick="currentSlide(10)"></span> 
+    </div>
+<!-- | FOOTER CODE | -->
+<div class="footer">
+    <div class="footer-column">
+        <h3>About Us</h3>
+        <ul>
+            <li><a href="https://www.icicibank.com/about-us/awards?ITM=nli_cms_about_us_awards_footer_nav.html">Awards & Recognition</a></li>
+            <li><a href="https://www.icicibank.com/about-us/media-center?ITM=nli_cms_about_us_media_center_footer_nav.html">Media Center</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Investor Relations</h3>
+        <ul>
+            <li><a href="https://www.icicibank.com/about-us/invest-relations?ITM=nli_cms_ir_overview_footer_nav.html">Overview</a></li>
+            <li><a href="https://nli.icicibank.com/NewRetailWeb/loadInoperativeAccounts.htm?ITM=nli_cms_%20unclaimed_accountsfooter_link&_ga=2.106878595.1852024781.1698581386-1973315115.1690798212&_gac=1.149032450.1697523963.EAIaIQobChMI-7jpvrn8gQMVt6lmAh1nywMHEAAYASAAEgKBxfD_BwE">List of Unclaimed Accounts</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Tools & Calculators</h3>
+        <ul>
+            <li><a href="https://www.icicibank.com/personal-banking/deposits/fixed-deposit/fd-calculator?ITM=nli_cms_calculators_fixed_deposit_emi_calculator_footer_nav">Fixed Deposit Calculator</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/loans/personal-loan/emi-calculator?ITM=nli_cms_calculators_personal_loan_emi_calculator_footer_nav.html">Personal Loan EMI Calculator</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/loans/home-loan/emi-calculator?ITM=nli_cms_calculators_home_loan_emi_calculator_footer_nav.html">Home Loan EMI Calculator</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/loans/car-loan/emi-calculator?ITM=nli_cms_calculators_car_loan_emi_calculator_footer_nav.html">Car Loan EMI Calculator</a></li>
+            <li><a href="https://www.icicibank.com/calculator/mutual-fund-calculator?ITM=nli_cms_calculators_mutual_fund_calculator_footer_nav">Mutual Fund Calculator</a></li>
+            <li><a href="https://www.icicibank.com/calculator/sip-calculator?ITM=nli_cms_calculators_sip_calculator_footer_nav">SIP Calculator</a></li>
+            <li><a href="https://www.icicibank.com/campus-power/education-loan-calculator?ITM=footer.html">Education Loan Calculator</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/investments/retirement-planning/golden-years?ITM=nli_cms_calculators_retirement_calculator_footer_nav.html">Retirement Calculator</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Customer Service</h3>
+        <ul>
+            <li><a href="https://www.icicibank.com/contact-us?ITM=nli_cms_customer_service_contact_us_footer_nav.html">Contact Us</a></li>
+            <li><a href="https://www.icicibank.com/customer-care?ITM=nli_cms_customer_service_customer_care_footer_nav.html">Customer Care</a></li>
+            <li><a href="https://www.icicibank.com/online-safe-banking/report-unauthorized-transaction?ITM=nli_cms_customer_service_report_unauthorized_transaction_footer_nav.html">Report Unauthorized Transactions</a></li>
+            <li><a href="https://www.icicibank.com/form-center?ITM=nli_cms_customer_service_form_center_footer_nav.html">Form Center</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/insta-banking/internet-banking/list-of-service-requests?ITM=nli_cms_customer_service_raise_a_service_request_footer_nav.html">Raise a Service Request</a></li>
+            <li><a href="https://www.icicibank.com/online-safe-banking/report-fraud?ITM=nli_cms_customer_service_report_suspicious_activities_footer_nav.html">Report Suspicious Activities</a></li>
+            <li><a href="https://www.icicibank.com/feedback?ITM=nli_cms_customer_service_complaints_and_grievance_redressal_footer_nav.html">Complaints and Grievance Redressal</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Ways to Bank</h3>
+        <ul>
+            <li><a href="https://www.icicibank.com/digital-banking/retail-digital-banking?ITM=nli_cms_ways_to_bank_digital_banking_footer_nav.html">Digital Banking</a></li>
+            <li><a href="https://www.icicibank.com/mobile-banking?ITM=nli_cms_ways_to_bank_mobile_banking_footer_nav.html">Mobile Banking</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/insta-banking/internet-banking?ITM=nli_cms_ways_to_bank_internet_banking_footer_nav.html">Internet Banking</a></li>
+            <li><a href="https://www.icicibank.com/mobile-banking/imobile-pay?ITM=nli_cms_ways_to_bank_imobile_pay_footer_nav.html">iMobile Pay</a></li>
+            <li><a href="https://www.icicibank.com/online-services/whatsapp-banking?ITM=nli_cms_ways_to_bank_whatsapp_banking_footer_nav.html">WhatsApp Banking</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/bank-wallet/pockets/pockets?ITM=nli_cms_ways_to_bank_pockets_footer_nav.html">Pockets</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/ipalchatbot?ITM=nli_cms_ways_to_bank_ask_ipal_footer_nav.html">Ask iPal</a></li>
+            <li><a href="https://www.icicibank.com/find-atm-branch?ITM=nli_cms_ways_to_bank_atm_branches_footer_nav.html">ATMs and Branches</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Explore</h3>
+        <ul>
+            <li><a href="https://www.icicibank.com/interest-rates?ITM=nli_cms_explore_interest_rates_footer_nav.html">Interest Rates</a></li>
+            <li><a href="https://www.icicibank.com/interest-rates?ITM=nli_cms_explore_service_charges_and_fees_footer_nav.html">Service Charges and Fees</a></li>
+            <li><a href="https://www.icicibank.com/get-account-activated?ITM=nli_cms_explore_account_activation_process_footer_nav.html">Account Activation Process</a></li>
+            <li><a href="https://www.icicibank.com/personal-banking/digital-lending?ITM=nli_cms_explore_imp_info_reala_to_digi_lending_footer_nav.html">Important Information Related to Digital Lending</a></li>
+        </ul>
+    </div>
+</div>
+<div class="bottom-footer">
+    <div class="customer-care">
+        <h3>Customer Care</h3>
+        <a href="https://www.icicibank.com/customer-care?ITM=nli_cms_customer-care_footer_nav"target="_blank">
+            <button>📞 1800 1080</button>
+        </a>
+    </div>
+    <!-- <div class="social-icons">
+        <h3>Get Social</h3>
+        <img src="facebook-icon.png" alt="Facebook">
+        <img src="twitter-icon.png" alt="Twitter">
+        <img src="linkedin-icon.png" alt="LinkedIn">
+        <img src="youtube-icon.png" alt="YouTube">
+    </div> -->
+    <div class="app-icons">
+        <h3>Install iMobile App</h3>
+        <a href="https://apps.apple.com/in/app/imobile-pay-loan-banking-app/id375276006?ITM=nli_cms_download_links_imobile_appstore_footer_nav" target="_blank">
+            <img src="images/A-STORE.png" alt="App Store">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.csam.icici.bank.imobile&hl=en_IN?ITM%3Dnli_cms_download_links_imobile_playstore_footer_nav&pli=1" target="_blank">
+            <img src="images/G-STORE.png" alt="Google Play">
+        </a>
+    </div>
+    <div class="dicgc">
+        <div class="registration-icons">
+            <h3>ICICI Bank Ltd is registered with <a href="https://www.dicgc.org.in">DICGC</a></h3>
+            <img src="images/DICGC.webp" alt="DICGC">
+            <img src="images/DICGC-QR.webp" alt="QR Code">
+        </div>
+    </div>
+</div>
+<br><br>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3500);
+        }
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        $(document).ready(function() {
+            $('#logoutLink').click(function(e) {
+                e.preventDefault(); 
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You will be logged out.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, log me out!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire(
+                            'Logged Out!',
+                            'You have been logged out.',
+                            'success'
+                        ).then(() => {
+                            setTimeout(() => {
+                                window.location.href = 'app.html';
+                            }, 500);
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

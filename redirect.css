@@ -1,0 +1,25 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    scroll-behavior: smooth;
+    background-color: whitesmoke;
+}
+.container {
+    max-width: 80%;
+    text-align: center;
+    justify-content: center;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    color: #333;
+}
+p {
+    color: #666;
+}

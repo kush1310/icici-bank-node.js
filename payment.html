@@ -1,0 +1,648 @@
+<!-- PAYMENT PAGE | ICICI BANK -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="icon" href="1.svg" type="image/x-icon">
+    <title>Payment Dashboard | ICICI BANK</title>
+    <style>
+      @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+      body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        scroll-behavior: smooth;
+        background-color: whitesmoke;
+      }
+      :root {
+        --field-border: 1px solid #eeeeee;
+        --field-border-radius: 0.5em;
+        --secondary-text: #000000;
+        --sidebar-color: #f1f1f1;
+        --accent-color: #8bd22d;
+      }
+        /* | NAVIGATION BAR | */
+      .navbar {
+        background-color: #fedec2;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+      }
+      .navbar a {
+        color: #000000;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 20px;
+        border: solid orangered 0.2rem;
+        border-radius: 10px;
+        transition: color 0.2s;
+        margin-right: 10px;
+      }
+      .navbar a:hover {
+        color: orangered;
+        border: 0;
+        border-bottom: solid orangered 0.2rem;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .flex {
+        display: flex;
+      }
+      .flex-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .flex-fill {
+        display: flex;
+        flex: 1 1;
+      }
+      .flex-vertical {
+        display: flex;
+        flex-direction: column;
+      }
+      .flex-vertical-center {
+        display: flex;
+        align-items: center;
+      }
+      .flex-between {
+        display: flex;
+        justify-content: space-between;
+      }
+      .p-sm {
+        padding: 0.5em;
+      }
+      .pl-sm {
+        padding-left: 0.5em;
+      }
+      .pr-sm {
+        padding-right: 0.5em;
+      }
+      .pb-sm {
+        padding-bottom: 0.5em;
+      }
+      .p-md {
+        padding: 1em;
+      }
+      .pb-md {
+        padding-bottom: 1em;
+      }
+      .p-lg {
+        padding: 2em;
+      }
+      .m-md {
+        margin: 1em;
+      }
+      .size-md {
+        font-size: 0.85em;
+      }
+      .size-lg {
+        font-size: 1.5em;
+      }
+      .size-xl {
+        font-size: 2em;
+      }
+      .half-width {
+        width: 50%;
+      }
+      .pointer {
+        cursor: pointer;
+      }
+      .uppercase {
+        text-transform: uppercase;
+      }
+      .ellipsis {
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .f-main-color {
+        color: #2962ff;
+      }
+      .f-secondary-color {
+        color: var(--secondary-text);
+      }
+      .b-main-color {
+        background: var(--accent-color);
+      }
+      .numbers::-webkit-outer-spin-button,
+      .numbers::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .bod-3 {
+        border-radius: 30px;
+      }
+      .main-back {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        justify-content: center;
+        height: 100vh;
+        top: 0rem;
+        left: 0rem;
+      }
+      .header {
+        padding-bottom: 1em;
+      }
+      .header .title {
+        font-size: 1.2em;
+      }
+      .header .title span {
+        font-weight: 300;
+      }
+      .card-data > div {
+        padding-bottom: 1.5em;
+      }
+      .card-data > div:first-child {
+        padding-top: 1.5em;
+      }
+      .card-property-title {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1;
+        margin-right: 0.5em;
+        padding-left: 5%;
+        border-bottom: solid rgb(0, 0, 0) 3px;
+
+      }
+      .card-property-title strong {
+        padding-bottom: 0.5em;
+        font-size: 0.85em;
+      }
+      .card-property-title span {
+        color: var(--secondary-text);
+        font-size: 0.75em;
+      }
+      .card-property-value {
+        flex: 1 1;
+      }
+      .card-number {
+        background: #fafafa;
+        border: var(--field-border);
+        border-radius: var(--field-border-radius);
+        padding: 0.5em 1em;
+      }
+      .card-number-field * {
+        line-height: 1;
+        margin: 0;
+        padding: 0;
+      }
+      .card-number-field input {
+        width: 100%;
+        height: 100%;
+        padding: 0.5em 1rem;
+        margin: 0 0.75em;
+        border: none;
+        color: #888888;
+        background: transparent;
+        font-family: inherit;
+        font-weight: 500;
+      }
+      .action button {
+        padding: 1.1em;
+        width: 100%;
+        height: 100%;
+        font-weight: 600;
+        font-size: 1em;
+        color: #ffffff;
+        border: none;
+        border-radius: 0.5em;
+        background: #2979ff;
+        transition: background-color 0.2s ease-in-out;
+      }
+      .action button:hover {
+        background: #85da35;
+      }
+      .input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 3em;
+        overflow: hidden;
+        border: var(--field-border);
+        border-radius: var(--field-border-radius);
+      }
+      .input-container input,
+      .input-container i {
+        line-height: 1;
+      }
+      .input-container input {
+        flex: 1 1;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        border: none;
+        border-radius: var(--field-border-radius);
+        font-weight: 800;
+        font-size: 0.85em;
+      }
+      .input-container input:focus {
+        background: #e3f2fd;
+        color: #000000;
+      }
+      .input-container input::placeholder {
+        color: #353131;
+      }
+      .input-container input::-webkit-outer-spin-button,
+      .input-container input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .input-container i {
+        position: absolute;
+        right: 0.5em;
+      }
+      .purchase-section {
+        position: relative;
+        overflow: visible;
+        padding: 0 1em 1em 1em;
+        background: var(--sidebar-color);
+        border-top-left-radius: 0.8em;
+        border-top-right-radius: 0.8em;
+      }
+      .purchase-section:before {
+        content: "";
+        position: absolute;
+        width: 1.6em;
+        height: 1.6em;
+        border-radius: 50%;
+        left: -0.8em;
+        bottom: -0.8em;
+        background: #ffffff;
+      }
+      .purchase-section:after {
+        content: "";
+        position: absolute;
+        width: 1.6em;
+        height: 1.6em;
+        border-radius: 50%;
+        right: -0.8em;
+        bottom: -0.8em;
+        background: #ffffff;
+      }
+      .card-mockup {
+        position: relative;
+        margin: 3em 1em 1.5em 1em;
+        padding: 1.5em 1.2em;
+        border-radius: 0.6em;
+        background: #72a2f7;
+        color: #fff;
+        box-shadow: 0 0.5em 1em 0.125em rgba(0, 0, 0, 0.1);
+      }
+      .card-mockup:after {
+        content: "";
+        position: absolute;
+        width: 25%;
+        top: -0.2em;
+        left: 37.5%;
+        height: 0.2em;
+        background: rgb(220, 220, 220);
+        border-top-left-radius: 0.2em;
+        border-top-right-radius: 0.2em;
+      }
+      .card-mockup:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 25%;
+        left: 37.5%;
+        height: 0.5em;
+        background: #2962ff36;
+        border-bottom-left-radius: 0.2em;
+        border-bottom-right-radius: 0.2em;
+        box-shadow: 0 2px 15px 5px #2962ff4d;
+      }
+      .separation-line {
+        border-top: 1px dashed #aaa;
+        margin: 0 0.8em;
+      }
+      .total-section {
+        position: relative;
+        overflow: hidden;
+        padding: 1em;
+        background: var(--sidebar-color);
+        border-bottom-left-radius: 0.8em;
+        border-bottom-right-radius: 0.8em;
+      }
+      .total-section:before {
+        content: "";
+        position: absolute;
+        width: 1.6em;
+        height: 1.6em;
+        border-radius: 50%;
+        left: -0.8em;
+        top: -0.8em;
+        background: #ffffff;
+      }
+      .total-section:after {
+        content: "";
+        position: absolute;
+        width: 1.6em;
+        height: 1.6em;
+        border-radius: 50%;
+        right: -0.8em;
+        top: -0.8em;
+        background: #ffffff;
+      }
+      .total-label {
+        font-size: 0.8em;
+        padding-bottom: 0.5em;
+      }
+      .total-section strong {
+        font-size: 1.5em;
+        font-weight: 800;
+      }
+      .total-section small {
+        font-weight: 600;
+      }
+      @media only screen and (min-width: 200px) and (max-width: 380px) {
+          .navbar a {
+            padding: 0.3rem;
+            font-size: 0.7rem;
+            border: 0;
+          }
+          .main-back {
+            display: flex;
+            position: absolute;
+            width: 75%;
+            justify-content: center;
+            height: 100vh;
+            top: 0rem;
+            left: 3rem;
+          }
+      }
+      @media only screen and (min-width: 380px) and (max-width: 576px) {
+          .navbar a {
+            padding: 0.3rem;
+            font-size: 0.8rem;
+            border: 0;
+          }
+          .main-back {
+            display: flex;
+            position: absolute;
+            width: 75%;
+            justify-content: center;
+            height: 100vh;
+            top: 0rem;
+            left: 3rem;
+          }
+      }
+      @media only screen and (min-width: 576px) and (max-width: 768px) {
+          .navbar a {
+            padding: 0.3rem;
+            font-size: 0.9rem;
+            border: 0;
+          }
+          .main-back {
+            display: flex;
+            position: absolute;
+            width: 75%;
+            justify-content: center;
+            height: 100vh;
+            top: 0rem;
+            left: 3rem;
+          }
+      }
+      @media only screen and (min-width: 768px) and (max-width: 902px) {       
+          .navbar a {
+            padding: 0.3rem;
+            font-size: 1rem;
+            border: 0;
+          }
+          .main-back {
+            display: flex;
+            position: absolute;
+            width: 80%;
+            justify-content: center;
+            height: 100vh;
+            top: 0rem;
+            left: 3rem;
+          }
+      }
+      @media only screen and (min-width: 902px) and (max-width: 1200px) {       
+          .navbar a {
+              padding: 0.4rem 0.8rem;
+              font-size: 1rem;
+          }
+      }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navbar">
+    <a style="color: red;" href="user-dashboard.html">Back</a>
+    <a href="app.html">Home</a>
+    <a href="about-us.html">About Us</a>
+    <a href="#" id="logoutLink">Log-Out</a>
+  </div>
+<br><br>
+  <div class="main-back">
+    <div class="container m-auto bg-white p-5 bod-3">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <form>
+            <div class="header flex-between flex-vertical-center">
+              <div class="flex-vertical-center">
+                <i class="ai-bitcoin-fill size-xl pr-sm f-main-color"></i>
+                <span class="title">
+                    <br>
+                  <strong>Shah</strong><span>Pay</span>
+                </span>
+              </div>
+            </div>
+            <div class="card-data flex-fill flex-vertical">
+              <div class="flex-between flex-vertical-center">
+                <div class="card-property-title">
+                  <strong>Card Number</strong>
+                  <span>Enter 16-digit card number on the card</span>
+                </div>
+              </div>
+
+              <div class="flex-between">
+                <div class="card-number flex-vertical-center flex-fill">
+                  <div class="card-number-field flex-vertical-center flex-fill">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px">
+                      <path fill="#ff9800" d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z" />
+                      <path fill="#d50000" d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z" />
+                      <path fill="#ff3d00" d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z" />
+                    </svg>
+                    <input type="text" placeholder="Card Number" class="form-control" id="cardNumber" onkeypress="return onlyNumberKey(event)" maxlength="19" name="cardNumber" data-bound="carddigits_mock" data-def="0000 0000 0000 0000" required />
+                  </div>
+                  <i class="ai-circle-check-fill size-lg f-main-color"></i>
+                </div>
+              </div>
+
+              <div class="flex-between">
+                <div class="card-property-title">
+                  <strong>Expiry Date</strong>
+                  <span>Enter the expiration date of the card</span>
+                </div>
+                <div class="card-property-value flex-vertical-center">
+                  <div class="input-container half-width">
+                    <input class="numbers month-own" data-def="00" type="text" data-bound="mm_mock" placeholder="MM" />
+                  </div>
+                  <span class="m-md">/</span>
+                  <div class="input-container half-width">
+                    <input class="numbers year-own" data-def="01" type="text" data-bound="yy_mock" placeholder="YYYY" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-between">
+                <div class="card-property-title">
+                  <strong>CVV Number</strong>
+                  <span>Enter Card Verification Code (CVV or CVC) from the back of the card</span>
+                </div>
+                <div class="card-property-value">
+                  <div class="input-container">
+                    <input id="cvc" placeholder="CARD CVV" maxlength="3" onkeypress="return onlyNumberKey(event)" type="password" />
+                    <i id="cvc_toggler" data-target="cvc" class="ai-eye-open pointer"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-between">
+                <div class="card-property-title">
+                  <strong>Cardholder Name</strong>
+                  <span>Enter Cardholder's Name</span>
+                </div>
+                <div class="card-property-value">
+                  <div class="input-container">
+                    <input id="name" data-bound="name_mock" data-def="Mr. Cardholder" type="text" class="uppercase" placeholder="CARDHOLDER NAME" />
+                    <i class="ai-person"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex-between">
+                <div class="card-property-title">
+                  <strong>Receiver UPI ID</strong>
+                  <span>Enter UPI ID of receiver</span>
+                </div>
+                <div class="card-property-value">
+                  <div class="input-container">
+                    <input id="phone" type="text" placeholder="UPI ID" />
+                    <i class="ai-phone"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="action flex-center">
+              <button type="button" class="b-main-color pointer" style="max-width: 85%;" id="payNowButton">
+                Pay Now
+              </button>
+            </div>
+          </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <script>     
+            const bounds = document.querySelectorAll("[data-bound]");
+            for (let i = 0; i < bounds.length; i++) {
+              const targetId = bounds[i].getAttribute("data-bound");
+              const defValue = bounds[i].getAttribute("data-def");
+              const targetEl = document.getElementById(targetId);
+              bounds[i].addEventListener(
+                "blur",
+                () => (targetEl.innerText = bounds[i].value || defValue)
+              );
+            }
+            const cvc_toggler = document.getElementById("cvc_toggler");
+            cvc_toggler.addEventListener("click", () => {
+              const target = cvc_toggler.getAttribute("data-target");
+              const el = document.getElementById(target);
+              el.setAttribute("type", el.type === "text" ? "password" : "text");
+            });
+            function onlyNumberKey(evt) {
+              var ASCIICode = evt.which ? evt.which : evt.keyCode;
+              if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) return false;
+              return true;
+            }
+            $(function () {
+              $("#cardNumber").on("keyup", function (e) {
+                var val = $(this).val();
+                var newval = "";
+                val = val.replace(/\s/g, "");
+                for (var i = 0; i < val.length; i++) {
+                  if (i % 4 == 0 && i > 0) newval = newval.concat(" ");
+                  newval = newval.concat(val[i]);
+                }
+                $(this).val(newval);
+              });
+              $(".year-own").datepicker({
+                minViewMode: 2,
+                format: "yyyy"
+              });
+              $(".month-own").datepicker({
+                format: "MM",
+                minViewMode: "months",
+                maxViewMode: "months",
+                startView: "months"
+              });
+            });
+            $(document).ready(function() {
+                $('#payNowButton').click(function() {
+                    Swal.fire({
+                        title: 'Confirm Payment',
+                        text: "Are you sure you want to proceed with the payment?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, proceed!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Payment Successful!',
+                                'Your payment has been processed.',
+                                'success'
+                            ).then(() => {
+                                setTimeout(() => {
+                                    window.location.href = 'payment.html';
+                                }, 500);
+                            });
+                        }
+                    });
+                });
+                
+                $('#logoutLink').click(function(e) {
+                    e.preventDefault(); 
+
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "You will be logged out.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, log me out!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Logged Out!',
+                                'You have been logged out.',
+                                'success'
+                            ).then(() => {
+                                setTimeout(() => {
+                                    window.location.href = 'log-in.html';
+                                }, 500);
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

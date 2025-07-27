@@ -1,0 +1,219 @@
+<!-- FORGOT PASSWORD PAGE | ICICI BANK -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="icon" href="1.svg" type="image/x-icon">
+    <title>Forgot Password | ICICI BANK</title>
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            scroll-behavior: smooth;
+            background-color: whitesmoke;
+        }
+        /* | NAVIGATION BAR | */
+        .navbar {
+            background-color: #fedec2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        .navbar a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: solid orangered 0.2rem;
+            border-radius: 10px;
+            transition: color 0.2s;
+            margin-right: 10px;
+        }
+        .navbar a:hover {
+            color: orangered;
+            border: 0;
+            border-bottom: solid orangered 0.2rem;
+        }
+        .container {
+            margin-top: 15%;
+            max-width: 65%;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: forestgreen;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group input:focus {
+            background: #e3f2fd;
+            color: #000000;
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 10px;
+            background-color: forestgreen;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: darkgreen;
+        }
+        /* MEDIA QUERIES | EXTRA SMALL | */
+        @media only screen and (min-width: 200px) and (max-width: 380px) {
+          .navbar a {
+            padding: 0.3rem;
+            font-size: 0.7rem;
+            border: 0;
+          }
+          .navbar a:hover {
+                color: orangered;
+                border: 0;
+          }
+          .container{
+            margin-top: 45%;
+          }
+      }
+        /* MEDIA QUERIES | MOBILE | */
+        @media only screen and (min-width: 380px) and (max-width: 576px) {
+          .navbar a {
+            padding: 0.3rem;
+            font-size: 0.8rem;
+            border: 0;
+          }
+          .navbar a:hover {
+                color: orangered;
+                border: 0;
+          }
+          .container{
+            margin-top:35%;
+          }
+      }
+        /* MEDIA QUERIES | TABLET | */
+        @media only screen and (min-width: 576px) and (max-width: 768px) {
+            .navbar a {
+              padding: 0.3rem;
+              font-size: 1rem;
+              border: 0;
+            }
+            .navbar a:hover {
+                color: orangered;
+                border: 0;
+            }
+            .container{
+            margin-top: 30%;
+            }
+        }
+        /* MEDIA QUERIES | TABLET - LARGE | */
+        @media only screen and (min-width: 768px) and (max-width: 902px) {       
+            .navbar a {
+              padding: 0.3rem;
+              font-size: 1rem;
+              border: 0;
+             }
+             .navbar a:hover {
+                color: orangered;
+                border: 0;
+            }
+            .container{
+            margin-top: 25%;
+            }
+        }
+        /* MEDIA QUERIES | DESKTOP | */
+        @media only screen and (min-width: 902px) and (max-width: 1200px) {       
+            .navbar a {
+                padding: 0.4rem 0.8rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar" id="navbar">
+        <a href="log-in.html">Back</a>
+        <a href="app.html">Home</a>
+        <a href="about-us.html">About Us</a>
+        <a href="redirect_home-loans.html">Loan Services</a>
+    </div>
+    <div class="container">
+        <h2>Forgot Password</h2>
+        <form id="forgotPassForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function() {
+            $('#forgotPassForm').submit(function(e) {
+                e.preventDefault();
+                const username = $('#username').val();
+                const email = $('#email').val();
+
+                $.ajax({
+                    url: 'http://localhost:3000/forgot-password',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ username, email }),
+                    success: function(response) {
+                        Swal.fire(
+                            'Success!',
+                            'Password has been sent to your email. Please click "OK" button to open your "GMAIL"',
+                            'success'
+                        ).then(() => {
+                            window.location.href = 'https://mail.google.com/mail';
+                        });
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire(
+                            'Please enter the same email you entered during sign-in process.',
+                            jqXHR.responseJSON.message,
+                            'error'
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
