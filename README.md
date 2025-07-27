@@ -1,60 +1,57 @@
-# 💳 ICICI Bank Node.js Web App
+# ICICI Bank Node.js Web Application
 
-> A secure and responsive Node.js-based web application simulating online banking services for **ICICI Bank**. It features dynamic UI components, user authentication, session management, payment interface, and QR-based signup logic. Designed with scalability and real-time interactions in mind.
-
-![Node.js](https://img.shields.io/badge/Node.js-18.x-brightgreen?logo=node.js)
-![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)
-![Made with](https://img.shields.io/badge/Made%20with-Express%20%26%20MySQL-orange)
+A full-stack simulation of ICICI Bank’s online banking portal using Node.js, Express, MySQL, and Bootstrap 5. The application enables user registration, login, QR code generation, session-based routing, and financial service navigation in a responsive web interface.
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [Features](#-features)
-- [UI Highlights](#-ui-highlights)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Configuration](#-configuration)
-- [Technologies Used](#-technologies-used)
-- [Project Structure](#-project-structure)
-- [Screenshots](#-screenshots)
-- [License](#-license)
-
----
-
-## ✨ Features
-
-- 🔐 **User Authentication** (Signup/Login) with session handling
-- 🔄 **Session-based login flow**
-- 🧾 **Dynamic forms** for signup and payment
-- 💳 **QR code logic** (planned, partially implemented)
-- 📬 **Email integration** via `nodemailer`
-- 🏦 **MySQL database** for user data
-- ⚙️ **Responsive frontend** with Bootstrap & custom CSS
-- 🔄 **Redirect and navigation pages** for various services (loans, payments)
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Environment Configuration](#environment-configuration)
+- [Database Setup](#database-setup)
+- [UI Components](#ui-components)
+- [License](#license)
 
 ---
 
-## 🎨 UI Highlights
+## Overview
 
-- Mobile-first responsive design using `Bootstrap 5`
-- Styled components with custom media queries
-- Navigation bars with hover effects
-- Payment forms styled with CSS variables
-- Form inputs with validation and error messages
-- Slideshow banners, cards, and loan services
+This Node.js-based web application is designed to emulate ICICI Bank’s digital services portal, incorporating backend logic, secure user session handling, frontend UI with dynamic routing, and modular scalability. It uses MySQL for data persistence, supports user signup/login, and includes a structured dashboard and payment interface with responsive UI components.
 
 ---
 
-## 🛠 Installation
+## Features
 
-```bash
-# Clone the repository
-git clone https://github.com/kush1310/icici-bank-node.js.git
-cd icici-bank-node.js
+- Secure user authentication with session management
+- Dynamic user registration and login forms
+- MySQL-backed user table with auto-creation logic
+- Frontend payment dashboard with validation
+- User dashboard and service redirection
+- Email sending capability using Nodemailer
+- Structured QR code integration (template present)
+- Responsive UI using Bootstrap 5 and custom media queries
 
-# Install dependencies
-npm install
+---
 
-# Create a .env file based on the config below
-cp .env.example .env
+## Technologies
+
+| Layer        | Tools & Libraries                                  |
+|--------------|-----------------------------------------------------|
+| Frontend     | HTML, CSS, Bootstrap 5                              |
+| Backend      | Node.js, Express, dotenv, express-session           |
+| Database     | MySQL, mysql2                                       |
+| Utilities    | body-parser, cors, nodemailer, QRCode, uuid         |
+
+---
+
+## Installation
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/kush1310/icici-bank-node.js.git
+   cd icici-bank-node.js
